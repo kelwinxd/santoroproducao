@@ -168,10 +168,10 @@
       alert('Login feito com sucesso!')
       loginContainer.style.display = "none"
       catalogoContainer.style.display = "block"
-      document.getElementById("logoutBtn").style.display = "block"
+      logoutBtn.style.display = "block"
       carregarCatalogo()
     })
-
+    if(logoutBtn)
     // 🔹 Logout
     logoutBtn.addEventListener('click', async () => {
       await supabase.auth.signOut()

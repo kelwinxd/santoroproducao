@@ -462,7 +462,7 @@ main {
 	background-color: black;
 	width:100%;
 	color: yellow;
-	padding: 50px;
+	padding: 15px;
 	padding-inline:80px;
 	display: flex;
 	justify-content: space-between;
