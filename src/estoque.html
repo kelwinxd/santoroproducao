@@ -64,13 +64,71 @@
 				const { data, error } = await supabase
 				  .from('retasbruto')
 				  .select('*')
+				  
 		  
 				if (error) {
 				  console.error('Erro ao buscar dados:', error)
 				  reta10.textContent = 'Erro ao buscar dados'
 				  return
 				}
-		  
+				const container = document.querySelector(".containers-est")
+
+// Cria a tabela
+const table = document.createElement("table")
+table.border = "1"
+table.style.width = "100%"
+table.style.borderCollapse = "collapse"
+
+// Cria o cabeçalho
+const thead = document.createElement("thead")
+const headerRow = document.createElement("tr")
+
+const headers = ["ID", "Largura", "Aro", "Quantidade", "Criado em"]
+headers.forEach(h => {
+  const th = document.createElement("th")
+  th.textContent = h
+  th.style.padding = "5px"
+  th.style.backgroundColor = "#eee"
+  headerRow.appendChild(th)
+})
+
+thead.appendChild(headerRow)
+table.appendChild(thead)
+
+// Cria o corpo da tabela
+const tbody = document.createElement("tbody")
+
+data.forEach(i => {
+  const row = document.createElement("tr")
+
+  // cria cada célula
+  const tdId = document.createElement("td")
+  tdId.textContent = i.id
+
+  const tdLargura = document.createElement("td")
+  tdLargura.textContent = i.largura
+
+  const tdAro = document.createElement("td")
+  tdAro.textContent = i.aro
+
+  const tdQtd = document.createElement("td")
+  tdQtd.textContent = i.qtd
+
+  const tdCriado = document.createElement("td")
+  tdCriado.textContent = new Date(i.criado_em).toLocaleDateString("pt-BR")
+
+  // adiciona as células à linha
+  row.append(tdId, tdLargura, tdAro, tdQtd, tdCriado)
+
+  // adiciona a linha ao corpo
+  tbody.appendChild(row)
+})
+
+table.appendChild(tbody)
+
+// adiciona a tabela no container
+container.innerHTML = "" // limpa o conteúdo anterior
+container.appendChild(table)
 				console.log('Dados recebidos:', data)
 		  
 				// Mostra na tela
