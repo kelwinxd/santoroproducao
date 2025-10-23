@@ -163,8 +163,8 @@
 
 		const expandBtn = document.querySelectorAll(".expCards")
 		expandBtn.forEach((i) => {
-			i.addEventListener("click",(a) => {
-				a.closest(".list-op").classList.add("desap")
+			i.addEventListener("click",(e) => {
+				e.target.closest(".list-op").classList.add("desap")
 				if(a.closest(".list-op").classList.contains("desap")){
 					a.closest(".list-op").classList.remove("desap")
 				}
