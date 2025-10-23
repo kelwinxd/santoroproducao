@@ -62,7 +62,7 @@
 			try {
 				// 🔹 Busca todos os registros da tabela "retasbrutos"
 				const { data, error } = await supabase
-				  .from('retasbrutos')
+				  .from('retasbruto')
 				  .select('*')
 		  
 				if (error) {
