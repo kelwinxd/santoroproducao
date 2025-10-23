@@ -454,6 +454,18 @@ main {
 	margin-top: 50px;
 }
 
+#catalogoContainer {
+	padding-inline:80px;
+}
+
+.header-prod {
+	background-color: black;
+	color: yellow;
+	padding: 50px;
+	padding-inline:80px;
+	display: flex;
+	justify-content: space-between;
+}
 
 
 @media screen and (max-width:800px){

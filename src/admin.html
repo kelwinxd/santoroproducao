@@ -7,7 +7,11 @@
   <link rel="stylesheet" href="model.css">
 </head>
 <body>
-  <h1>Catálogo de Retas Bruto</h1>
+  <header class="header-prod">
+    <button id="logoutBtn" class="display:none">Sair</button>
+    <h2>Admin Producao</h2>
+
+  </header>
 
   <!-- Login -->
   <div id="loginContainer">
@@ -21,9 +25,8 @@
 
   <!-- Catálogo (oculto até logar) -->
   <div id="catalogoContainer" style="display:none;">
-    <button id="logoutBtn">Sair</button>
-    <h2>Gerenciar Retas Bruto</h2>
-    <div id="catalogo"></div>
+  
+   
 
     <h3>Adicionar novo item</h3>
     <form id="addForm">
@@ -32,6 +35,8 @@
       <input type="number" id="qtd" placeholder="Quantidade" required>
       <button type="submit">Adicionar</button>
     </form>
+
+    <div id="catalogo"></div>
   </div>
 
   <script type="module">
@@ -67,7 +72,7 @@
       // Cabeçalho
       const thead = document.createElement("thead")
       const headerRow = document.createElement("tr")
-      const headers = ["ID", "Largura", "Aro", "Quantidade", "Ações"]
+      const headers = ["Largura", "Aro", "Quantidade", "Ações"]
       headers.forEach(h => {
         const th = document.createElement("th")
         th.textContent = h
@@ -84,8 +89,7 @@
       data.forEach(i => {
         const row = document.createElement("tr")
 
-        const tdId = document.createElement("td")
-        tdId.textContent = i.id
+        
 
         const tdLargura = document.createElement("td")
         tdLargura.textContent = i.largura
@@ -107,7 +111,7 @@
         btnExcluir.onclick = () => deletarItem(i.id)
 
         tdAcoes.append(btnEditar, btnExcluir)
-        row.append(tdId, tdLargura, tdAro, tdQtd, tdAcoes)
+        row.append(tdLargura, tdAro, tdQtd, tdAcoes)
         tbody.appendChild(row)
       })
 
