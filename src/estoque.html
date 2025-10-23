@@ -41,68 +41,50 @@
 
 
     <main> 
-		<div class="opcoes">
-		 <ul> 
-			<li data-op="cnc-t" class="active">CNC</li>
-			<li data-op="torno-t">Torno</li>
-			<li data-op="acab-t">Acabamento</li>
-			<li data-op="util-t">Utilidades</li>
-			
-		 </ul>
-		</div>
-		<div class="sep">  </div>
-		
-		
-		<div class="containers">
-			<div class="cont" data-ni="cnc-t">
-			
+		<div class="containers-est">
+			<div class="card-dados dados-reta-10">
 
-			
-				<div class="card-tool">
-				<div class="pic-p">
-				<img src="./imgs/img-tool.jpg" alt="img" /> 
-				</div>
-		
-				<div class="info-card">  
-				<h1>Fresa Topo 1mm 4 Cortes</h1>
-
-				<p>Ideal para Furos em Aço</p>
-
-				<div class="t-btns">
-				<button class="copy">Copiar</button>
-				<button>Pedir</button>
-				</div>
-				</div>
-				
-				</div>
-
-			
 			</div>
-			<div class="cont" data-ni="torno-t">
-			
-			
-				<div class="card-tool">
-				<div class="pic-p">
-				<img src="./imgs/img-tool2.jpg" alt="img" /> 
-				</div>
-		
-				<div class="info-card">  
-				<h1>Videa Externa 11 x 180°</h1>
-
-				<p>Usinagem Reta externa</p>
-
-				<div class="t-btns">
-				<button class="copy">Copiar</button>
-				<button>Pedir</button>
-				</div>
-				</div>
-				
-				</div>
-			</div>
-			<div class="cont" data-ni="acab-t"> Acabamento  </div>
-			<div class="cont" data-ni="util-t"> Utilidades  </div>
 		</div>
 	</main>
+
+	<script type="module">
+		import { createClient } from 'https://esm.sh/@supabase/supabase-js@2'
+	  
+		// Conexão com seu projeto
+		const supabaseUrl = 'https://exsnpdmbuscemohjdpus.supabase.co'
+		const supabaseKey = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImV4c25wZG1idXNjZW1vaGpkcHVzIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NjAzNTc5OTIsImV4cCI6MjA3NTkzMzk5Mn0.kS4VsaFTYID77kEyfd8rtfrEbXlcQDMdNToFxHL4JPc'
+		window.supabase = createClient(supabaseUrl, supabaseKey)
+
+		const reta10 = document.querySelector(".dados-reta-10")
+
+		async function fetchRetas10() {
+			try {
+				// 🔹 Busca todos os registros da tabela "retasbrutos"
+				const { data, error } = await supabase
+				  .from('retasbrutos')
+				  .select('*')
+		  
+				if (error) {
+				  console.error('Erro ao buscar dados:', error)
+				  reta10.textContent = 'Erro ao buscar dados'
+				  return
+				}
+		  
+				console.log('Dados recebidos:', data)
+		  
+				// Mostra na tela
+				reta10.textContent = JSON.stringify(data, null, 2)
+		  
+			  } catch (err) {
+				console.error('Erro inesperado:', err)
+				reta10.textContent = 'Erro inesperado'
+			  }
+		}
+
+		fetchRetas10()
+	  </script>
+	  
 
  <script src="./script.js">
     </script>
