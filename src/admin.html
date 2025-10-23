@@ -1,69 +1,178 @@
 <!DOCTYPE html>
-<html lang="en">
-
+<html lang="pt-BR">
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="shortcut icon" href="logosan.png" type="image/x-icon" />
-    <link rel="stylesheet" type="text/css" href="./model.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Santoro Produção - Admin</title>
+  <link rel="stylesheet" href="model.css">
 </head>
-	<!-- Supabase JS SDK -->
-
-    <title>Santoro Produção</title>
-</head>
-
 <body>
   <h1>Catálogo de Retas Bruto</h1>
-<div id="catalogo"></div>
 
-<h2>Login Admin</h2>
-<form id="loginForm">
-  <input type="email" id="email" placeholder="Email">
-  <input type="password" id="senha" placeholder="Senha">
-  <button type="submit">Login</button>
-</form>
+  <!-- Login -->
+  <div id="loginContainer">
+    <h2>Login Admin</h2>
+    <form id="loginForm">
+      <input type="email" id="email" placeholder="Email" required>
+      <input type="password" id="senha" placeholder="Senha" required>
+      <button type="submit">Entrar</button>
+    </form>
+  </div>
 
-  
- 
- 
+  <!-- Catálogo (oculto até logar) -->
+  <div id="catalogoContainer" style="display:none;">
+    <button id="logoutBtn">Sair</button>
+    <h2>Gerenciar Retas Bruto</h2>
+    <div id="catalogo"></div>
 
-<script type="module" >
+    <h3>Adicionar novo item</h3>
+    <form id="addForm">
+      <input type="number" id="largura" placeholder="Largura" required>
+      <input type="number" id="aro" placeholder="Aro" required>
+      <input type="number" id="qtd" placeholder="Quantidade" required>
+      <button type="submit">Adicionar</button>
+    </form>
+  </div>
 
-  import { createClient } from 'https://esm.sh/@supabase/supabase-js@2'
-	  
-  // Conexão com seu projeto
-  const supabaseUrl = 'https://exsnpdmbuscemohjdpus.supabase.co'
-  const supabaseKey = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImV4c25wZG1idXNjZW1vaGpkcHVzIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NjAzNTc5OTIsImV4cCI6MjA3NTkzMzk5Mn0.kS4VsaFTYID77kEyfd8rtfrEbXlcQDMdNToFxHL4JPc'
-  window.supabase = createClient(supabaseUrl, supabaseKey)
-async function carregarCatalogo() {
-  const { data, error } = await supabase.from('retasbruto').select('*');
-  if (error) return console.error(error);
+  <script type="module">
+    import { createClient } from 'https://esm.sh/@supabase/supabase-js@2'
 
-  const catalogoDiv = document.getElementById('catalogo');
-  data.forEach(item => {
-    const div = document.createElement('div');
-    div.innerHTML = `<h3>${item.size}</h3><p>${item.aro}</p>`;
-    catalogoDiv.appendChild(div);
-  });
-}
+    const supabaseUrl = 'https://exsnpdmbuscemohjdpus.supabase.co'
+    const supabaseKey = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImV4c25wZG1idXNjZW1vaGpkcHVzIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NjAzNTc5OTIsImV4cCI6MjA3NTkzMzk5Mn0.kS4VsaFTYID77kEyfd8rtfrEbXlcQDMdNToFxHL4JPc'
+    const supabase = createClient(supabaseUrl, supabaseKey)
 
-document.getElementById('loginForm').addEventListener('submit', async e => {
-  e.preventDefault();
-  const email = document.getElementById('email').value;
-  const senha = document.getElementById('senha').value;
+    const loginForm = document.getElementById('loginForm')
+    const loginContainer = document.getElementById('loginContainer')
+    const catalogoContainer = document.getElementById('catalogoContainer')
+    const catalogoDiv = document.getElementById('catalogo')
+    const addForm = document.getElementById('addForm')
+    const logoutBtn = document.getElementById('logoutBtn')
 
-  const { data, error } = await supabase.auth.signInWithPassword({ email, password: senha });
-  if (error) return alert(error.message);
+    // 🔹 Carrega a tabela de dados
+    async function carregarCatalogo() {
+      catalogoDiv.innerHTML = ""
+      const { data, error } = await supabase.from('retasbruto').select('*').order('id', { ascending: true })
+      if (error) {
+        console.error(error)
+        return
+      }
 
-  alert('Login feito com sucesso!');
-});
+      // Cria a tabela
+      const table = document.createElement("table")
+      table.border = "1"
+      table.style.width = "100%"
+      table.style.borderCollapse = "collapse"
+      table.classList.add("table-list")
 
-carregarCatalogo();
-</script>
+      // Cabeçalho
+      const thead = document.createElement("thead")
+      const headerRow = document.createElement("tr")
+      const headers = ["ID", "Largura", "Aro", "Quantidade", "Ações"]
+      headers.forEach(h => {
+        const th = document.createElement("th")
+        th.textContent = h
+        th.style.padding = "5px"
+        th.style.backgroundColor = "#eee"
+        headerRow.appendChild(th)
+      })
+      thead.appendChild(headerRow)
+      table.appendChild(thead)
 
+      // Corpo da tabela
+      const tbody = document.createElement("tbody")
 
+      data.forEach(i => {
+        const row = document.createElement("tr")
 
+        const tdId = document.createElement("td")
+        tdId.textContent = i.id
+
+        const tdLargura = document.createElement("td")
+        tdLargura.textContent = i.largura
+
+        const tdAro = document.createElement("td")
+        tdAro.textContent = i.aro
+
+        const tdQtd = document.createElement("td")
+        tdQtd.textContent = i.qtd
+
+        const tdAcoes = document.createElement("td")
+
+        const btnEditar = document.createElement("button")
+        btnEditar.textContent = "Editar"
+        btnEditar.onclick = () => editarItem(i.id, i.qtd)
+
+        const btnExcluir = document.createElement("button")
+        btnExcluir.textContent = "Excluir"
+        btnExcluir.onclick = () => deletarItem(i.id)
+
+        tdAcoes.append(btnEditar, btnExcluir)
+        row.append(tdId, tdLargura, tdAro, tdQtd, tdAcoes)
+        tbody.appendChild(row)
+      })
+
+      table.appendChild(tbody)
+      catalogoDiv.appendChild(table)
+    }
+
+    // 🔹 Adicionar novo item
+    addForm.addEventListener('submit', async (e) => {
+      e.preventDefault()
+      const largura = document.getElementById('largura').value
+      const aro = document.getElementById('aro').value
+      const qtd = document.getElementById('qtd').value
+
+      const { error } = await supabase.from('retasbruto').insert([{ largura, aro, qtd }])
+      if (error) return alert(error.message)
+
+      alert("Item adicionado!")
+      addForm.reset()
+      carregarCatalogo()
+    })
+
+    // 🔹 Editar item (atualizar quantidade)
+    async function editarItem(id, qtdAtual) {
+      const novaQtd = prompt("Nova quantidade:", qtdAtual)
+      if (novaQtd === null) return
+
+      const { error } = await supabase.from('retasbruto').update({ qtd: novaQtd }).eq('id', id)
+      if (error) return alert(error.message)
+
+      alert("Quantidade atualizada!")
+      carregarCatalogo()
+    }
+
+    // 🔹 Deletar item
+    async function deletarItem(id) {
+      if (!confirm("Tem certeza que deseja excluir este item?")) return
+      const { error } = await supabase.from('retasbruto').delete().eq('id', id)
+      if (error) return alert(error.message)
+
+      alert("Item excluído!")
+      carregarCatalogo()
+    }
+
+    // 🔹 Login
+    loginForm.addEventListener('submit', async e => {
+      e.preventDefault()
+      const email = document.getElementById('email').value
+      const senha = document.getElementById('senha').value
+
+      const { data, error } = await supabase.auth.signInWithPassword({ email, password: senha })
+      if (error) return alert("Erro: " + error.message)
+
+      alert('Login feito com sucesso!')
+      loginContainer.style.display = "none"
+      catalogoContainer.style.display = "block"
+      carregarCatalogo()
+    })
+
+    // 🔹 Logout
+    logoutBtn.addEventListener('click', async () => {
+      await supabase.auth.signOut()
+      catalogoContainer.style.display = "none"
+      loginContainer.style.display = "block"
+    })
+  </script>
 </body>
-
 </html>
