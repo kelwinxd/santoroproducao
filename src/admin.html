@@ -37,7 +37,7 @@
   const supabaseKey = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImV4c25wZG1idXNjZW1vaGpkcHVzIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NjAzNTc5OTIsImV4cCI6MjA3NTkzMzk5Mn0.kS4VsaFTYID77kEyfd8rtfrEbXlcQDMdNToFxHL4JPc'
   window.supabase = createClient(supabaseUrl, supabaseKey)
 async function carregarCatalogo() {
-  const { data, error } = await supabaseClient.from('retasbruto').select('*');
+  const { data, error } = await supabase.from('retasbruto').select('*');
   if (error) return console.error(error);
 
   const catalogoDiv = document.getElementById('catalogo');
@@ -53,7 +53,7 @@ document.getElementById('loginForm').addEventListener('submit', async e => {
   const email = document.getElementById('email').value;
   const senha = document.getElementById('senha').value;
 
-  const { data, error } = await supabaseClient.auth.signInWithPassword({ email, password: senha });
+  const { data, error } = await supabase.auth.signInWithPassword({ email, password: senha });
   if (error) return alert(error.message);
 
   alert('Login feito com sucesso!');
