@@ -7,7 +7,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="shortcut icon" href="logosan.png" type="image/x-icon" />
     <link rel="stylesheet" type="text/css" href="./model.css">
-	  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.35.1/dist/umd/supabase.umd.min.js"></script>
 </head>
 	<!-- Supabase JS SDK -->
 
@@ -29,14 +28,14 @@
  
  
 
-<script >
+<script type="module" >
 
-const SUPABASE_URL = 'https://exsnpdmbuscemohjdpus.supabase.co';
-const SUPABASE_ANON_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImV4c25wZG1idXNjZW1vaGpkcHVzIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NjAzNTc5OTIsImV4cCI6MjA3NTkzMzk5Mn0.kS4VsaFTYID77kEyfd8rtfrEbXlcQDMdNToFxHL4JPc';
-
-// Inicializa o cliente usando o objeto global do UMD
-const supabaseClient = supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
-
+  import { createClient } from 'https://esm.sh/@supabase/supabase-js@2'
+	  
+  // Conexão com seu projeto
+  const supabaseUrl = 'https://exsnpdmbuscemohjdpus.supabase.co'
+  const supabaseKey = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImV4c25wZG1idXNjZW1vaGpkcHVzIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NjAzNTc5OTIsImV4cCI6MjA3NTkzMzk5Mn0.kS4VsaFTYID77kEyfd8rtfrEbXlcQDMdNToFxHL4JPc'
+  window.supabase = createClient(supabaseUrl, supabaseKey)
 async function carregarCatalogo() {
   const { data, error } = await supabaseClient.from('retasbruto').select('*');
   if (error) return console.error(error);
