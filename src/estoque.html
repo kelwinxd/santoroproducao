@@ -43,16 +43,20 @@
     <main> 
 	
 		<div class="opcoes op-estoque">
-			<ul> 
-				<li data-op="rl-4">Retas 4mm Latão</li>
-			   <li data-op="rl-7">Retas 7mm Latão</li> 
-			   <li data-op="rl-10" class="active">Retas 10mm Latão</li>
+			<div class="header-op">
+				<h1>Retas Latão</h1>
+				<span class="expCards">+</span>
+			</div>
+			<ul class="list-op rl"> 
+				<li data-op="rl-4">4mm</li>
+			   <li data-op="rl-7">7mm</li> 
+			   <li data-op="rl-10" class="active">10mm</li>
 			  
 			   
 			</ul>
 		   </div>
 		   <div class="sep"></div>
-			<div class="containers-est">
+			<div class="containers-est rl">
 				<div class="card-dados rl-10">
 					<p>carregando...</p>
 				</div>
@@ -156,6 +160,16 @@
 		
 		// Mostra só a primeira tabela por padrão
 		cards.forEach((c, i) => c.style.display = i === 0 ? 'block' : 'none')
+
+		const expandBtn = document.querySelectorAll(".expCards")
+		expandBtn.forEach((i) => {
+			i.addEventListener("click",(a) => {
+				a.closest(".list-op").classList.add("desap")
+				if(a.closest(".list-op").classList.contains("desap")){
+					a.closest(".list-op").classList.remove("desap")
+				}
+			})
+		})
 		</script>
 		
 	  
