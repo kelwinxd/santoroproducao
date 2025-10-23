@@ -458,6 +458,14 @@ main {
 	padding-inline:80px;
 }
 
+.header-dc {
+	background-color: black;
+	color: #fff;
+	display: flex;
+	justify-content: space-between;
+	
+}
+
 .header-prod {
 	background-color: black;
 	width:100%;

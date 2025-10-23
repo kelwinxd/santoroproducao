@@ -41,106 +41,121 @@
 
 
     <main> 
-		<h1>Retas Latão</h1>
-		<div class="containers-est">
-			<div class="card-dados dados-reta-10">
+	
+		<div class="opcoes op-estoque">
+			<ul> 
+			   <li data-op="rl-10" class="active">Retas 10mm Latão</li>
+			   <li data-op="rl-7">Retas 7mm Latão</li>
+			   <li data-op="rl-4">Retas 4mm Latão</li>
+			  
+			   
+			</ul>
+		   </div>
+			<div class="containers-est">
+				<div class="card-dados rl-10">
+	
+				</div>
 
+				<div class="card-dados rl-7">
+					<h1>Retas 7mm</h1>
+				</div>
+
+				<div class="card-dados rl-4">
+					<h1>Retas 7mm</h1>
+				</div>
 			</div>
-		</div>
+	
+		
 	</main>
 
 	<script type="module">
 		import { createClient } from 'https://esm.sh/@supabase/supabase-js@2'
-	  
-		// Conexão com seu projeto
+		
+		// Conexão com seu projeto Supabase
 		const supabaseUrl = 'https://exsnpdmbuscemohjdpus.supabase.co'
 		const supabaseKey = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImV4c25wZG1idXNjZW1vaGpkcHVzIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NjAzNTc5OTIsImV4cCI6MjA3NTkzMzk5Mn0.kS4VsaFTYID77kEyfd8rtfrEbXlcQDMdNToFxHL4JPc'
-		window.supabase = createClient(supabaseUrl, supabaseKey)
-
-		const reta10 = document.querySelector(".dados-reta-10")
-
-		async function fetchRetas10() {
-			try {
-				// 🔹 Busca todos os registros da tabela "retasbrutos"
-				const { data, error } = await supabase
-				  .from('retasbruto')
-				  .select('*')
-				  
-		  
-				if (error) {
-				  console.error('Erro ao buscar dados:', error)
-				  reta10.textContent = 'Erro ao buscar dados'
-				  return
-				}
-				const container = document.querySelector(".containers-est")
-
-// Cria a tabela
-const table = document.createElement("table")
-table.border = "1"
-table.style.width = "100%"
-table.style.borderCollapse = "collapse"
-
-table.classList.add("table-list")
-
-// Cria o cabeçalho
-const thead = document.createElement("thead")
-const headerRow = document.createElement("tr")
-
-const headers = ["Largura", "Aro", "Quantidade"]
-headers.forEach(h => {
-  const th = document.createElement("th")
-  th.textContent = h
-  th.style.padding = "5px"
-  th.style.backgroundColor = "#eee"
-  headerRow.appendChild(th)
-})
-
-thead.appendChild(headerRow)
-table.appendChild(thead)
-
-// Cria o corpo da tabela
-const tbody = document.createElement("tbody")
-
-data.forEach(i => {
-  const row = document.createElement("tr")
-
-  
-
-  const tdLargura = document.createElement("td")
-  tdLargura.textContent = i.largura
-
-  const tdAro = document.createElement("td")
-  tdAro.textContent = i.aro
-
-  const tdQtd = document.createElement("td")
-  tdQtd.textContent = i.qtd
-
-
-  // adiciona as células à linha
-  row.append( tdLargura, tdAro, tdQtd)
-
-  // adiciona a linha ao corpo
-  tbody.appendChild(row)
-})
-
-table.appendChild(tbody)
-
-// adiciona a tabela no container
-container.innerHTML = "" // limpa o conteúdo anterior
-container.appendChild(table)
-				console.log('Dados recebidos:', data)
-		  
-				// Mostra na tela
-				
-		  
-			  } catch (err) {
-				console.error('Erro inesperado:', err)
-				reta10.textContent = 'Erro inesperado'
-			  }
+		const supabase = createClient(supabaseUrl, supabaseKey)
+		
+		// Função que cria uma tabela a partir dos dados
+		function criarTabela(data, container) {
+		  const table = document.createElement("table")
+		  table.border = "1"
+		  table.style.width = "100%"
+		  table.style.borderCollapse = "collapse"
+		  table.classList.add("table-list")
+		
+		  const thead = document.createElement("thead")
+		  const headerRow = document.createElement("tr")
+		  const headers = ["Largura", "Aro", "Quantidade"]
+		  headers.forEach(h => {
+			const th = document.createElement("th")
+			th.textContent = h
+			th.style.padding = "5px"
+			th.style.backgroundColor = "#eee"
+			headerRow.appendChild(th)
+		  })
+		  thead.appendChild(headerRow)
+		  table.appendChild(thead)
+		
+		  const tbody = document.createElement("tbody")
+		  data.forEach(i => {
+			const row = document.createElement("tr")
+			row.innerHTML = `
+			  <td>${i.largura}</td>
+			  <td>${i.aro}</td>
+			  <td>${i.qtd}</td>
+			`
+			tbody.appendChild(row)
+		  })
+		  table.appendChild(tbody)
+		
+		  container.innerHTML = ""
+		  container.appendChild(table)
 		}
-
-		fetchRetas10()
-	  </script>
+		
+		// Função para buscar dados e dividir por largura
+		async function carregarTabelas() {
+		  const { data, error } = await supabase.from('retasbruto').select('*')
+		  if (error) {
+			console.error('Erro ao buscar dados:', error)
+			return
+		  }
+		
+		  // Divide os dados conforme a largura
+		  const dados10 = data.filter(d => d.largura === 10)
+		  const dados7  = data.filter(d => d.largura === 7)
+		  const dados4  = data.filter(d => d.largura === 4)
+		
+		  // Monta as tabelas nas divs correspondentes
+		  criarTabela(dados10, document.querySelector('.rl-10'))
+		  criarTabela(dados7,  document.querySelector('.rl-7'))
+		  criarTabela(dados4,  document.querySelector('.rl-4'))
+		}
+		
+		// Inicializa o carregamento
+		await carregarTabelas()
+		
+		// Lógica das abas (mostrar uma tabela por vez)
+		const opcoes = document.querySelectorAll('.opcoes li')
+		const cards = document.querySelectorAll('.card-dados')
+		
+		opcoes.forEach(op => {
+		  op.addEventListener('click', () => {
+			// remove active de todas as opções
+			opcoes.forEach(o => o.classList.remove('active'))
+			op.classList.add('active')
+		
+			const alvo = op.dataset.op
+			cards.forEach(c => {
+			  c.style.display = c.classList.contains(alvo) ? 'block' : 'none'
+			})
+		  })
+		})
+		
+		// Mostra só a primeira tabela por padrão
+		cards.forEach((c, i) => c.style.display = i === 0 ? 'block' : 'none')
+		</script>
+		
 	  
 
  <script src="./script.js">
