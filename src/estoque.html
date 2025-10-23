@@ -79,11 +79,13 @@ table.border = "1"
 table.style.width = "100%"
 table.style.borderCollapse = "collapse"
 
+table.classList.add("table-list")
+
 // Cria o cabeçalho
 const thead = document.createElement("thead")
 const headerRow = document.createElement("tr")
 
-const headers = ["ID", "Largura", "Aro", "Quantidade", "Criado em"]
+const headers = ["Largura", "Aro", "Quantidade"]
 headers.forEach(h => {
   const th = document.createElement("th")
   th.textContent = h
@@ -101,9 +103,7 @@ const tbody = document.createElement("tbody")
 data.forEach(i => {
   const row = document.createElement("tr")
 
-  // cria cada célula
-  const tdId = document.createElement("td")
-  tdId.textContent = i.id
+  
 
   const tdLargura = document.createElement("td")
   tdLargura.textContent = i.largura
@@ -114,11 +114,9 @@ data.forEach(i => {
   const tdQtd = document.createElement("td")
   tdQtd.textContent = i.qtd
 
-  const tdCriado = document.createElement("td")
-  tdCriado.textContent = new Date(i.criado_em).toLocaleDateString("pt-BR")
 
   // adiciona as células à linha
-  row.append(tdId, tdLargura, tdAro, tdQtd, tdCriado)
+  row.append( tdLargura, tdAro, tdQtd)
 
   // adiciona a linha ao corpo
   tbody.appendChild(row)

@@ -445,11 +445,20 @@ main {
 	text-align:left;
 }
 
+.containers-est {
+	display: flex;
+	justify-content: center;
+}
+
+.table-list {
+	margin-top: 50px;
+}
+
 
 
 @media screen and (max-width:800px){
 	html,body {
-		overflow-x: !import hidden;
+		overflow-x: hidden;
 		max-width:100%;
 		
 	
