@@ -30,8 +30,13 @@
 
     <h3>Adicionar novo item</h3>
     <form id="addForm">
-      <input type="number" id="largura" placeholder="Largura" required>
-      <input type="number" id="aro" placeholder="Aro" required>
+      <select name="" id="largura">
+        <option value="4">4</option>
+        <option value="7">7</option>
+        <option value="10">10</option>
+      </select>
+     
+      <input type="number" id="aro" placeholder="Aro" min="12" max="32" required>
       <input type="number" id="qtd" placeholder="Quantidade" required>
       <button type="submit">Adicionar</button>
     </form>

@@ -468,6 +468,10 @@ main {
 	justify-content: space-between;
 }
 
+#logounBtn {
+	display: none;
+}
+
 
 @media screen and (max-width:800px){
 	html,body {
