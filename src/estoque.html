@@ -54,15 +54,15 @@
 		   <div class="sep"></div>
 			<div class="containers-est">
 				<div class="card-dados rl-10">
-	
+					<p>carregando...</p>
 				</div>
 
 				<div class="card-dados rl-7">
-					<h1>Retas 7mm</h1>
+					<p>carregando...</p>
 				</div>
 
 				<div class="card-dados rl-4">
-					<h1>Retas 7mm</h1>
+					<p>carregando...</p>
 				</div>
 			</div>
 	
@@ -79,6 +79,7 @@
 		
 		// Função que cria uma tabela a partir dos dados
 		function criarTabela(data, container) {
+			if(!data) return
 		  const table = document.createElement("table")
 		  table.border = "1"
 		  table.style.width = "100%"
