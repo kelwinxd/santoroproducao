@@ -1,0 +1,193 @@
+﻿<!DOCTYPE html>
+<html lang="pt">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="shortcut icon" href="logosan.png" type="image/x-icon" />
+    <link rel="stylesheet" type="text/css" href="./model.css">
+    <title>Santoro Produção</title>
+</head>
+
+<body>
+   <header class="header">
+
+
+
+<a href="https://semijoiassantoro.com.br/">
+    <img src="logosan.png">
+</a>
+<ul class="list">
+	 
+    <a href="./index.html" class="tool">Ferramentas</a>
+    <a href="./processos.html" class="tool active">Processos</a>
+	<a href="./index.html" class="tool">Estoque</a>
+</ul>
+<div class="menu-h"> Menu </div>
+<ul class="list-h">
+	 <button class="close-h">X</button>
+    <a href="./index.html" class="tool">Ferramentas</a>
+    <a href="./processos.html" class="tool active">Processos</a>
+	<a href="./index.html" class="tool">Sucata</a>
+</ul>
+
+
+
+   </header>
+   
+
+
+    <main> 
+	
+		<div class="opcoes op-proc">
+		 <ul> 
+			<li data-op="cnc-p" class="active">CNC</li>
+			<li data-op="solda-p">Solda Solitário</li>
+			<li data-op="crav-p">Cravação</li>
+			<li data-op="grav-p">Gravação</li>
+			<li data-op="torno-p">Torneamento</li>
+			
+		 </ul>
+		</div>
+		
+		<div class="sep"></div>
+		
+		
+		<div class="containers">
+			<div class="cont proc" data-ni="cnc-p">
+				 <h2>Furos no CNC</h2>
+  <ol>
+    <li>Abra o software CNC USB Controller e ligue o CNC pressionando o interruptor vermelho para cima. Prenda a peça na castanha, girando-a no sentido anti-horário.</li>
+    <li><strong>Troca de ferramentas:</strong> com chave de boca 12 no mandril e chave 17 logo abaixo, gire ambas para fora até soltar o suporte; troque a ferramenta e aperte girando no sentido inverso.</li>
+    <li><strong>Alinhamento:</strong> alinhe a ferramenta no centro da peça ou no local desejado do furo, mantendo distância em Z da peça. O spindle pode ser controlado pelos controles do painel ou pelo Numpad (4/6 X, 7/1 Z, 8/2 Y).</li>
+    <li><strong>Medição:</strong> dois métodos — (A) para 1 furo simples: selecione Offset → Measure Offset Z ou pressione Alt + 0; (B) para peças com mais de 1 furo: importar ajustes (ex.: "X5 Y15 A6000 Grande Adjust.setting") e, se o Z mudar ao importar, zerá-lo novamente. Centralize a ferramenta, pressione Determinar Posição - Zero e insira metade do X do Adjust importado (ex.: X-2.5) no campo de texto e dê Enter. Depois use Máquina → Capture & Measure Points → Measure → Measure Grid Z (ou Alt + M).</li>
+    <li><strong>Iniciar o programa:</strong> Clique em Abrir (ícone de pasta), selecione o programa; em Programa → Advanced → Warp → OK (ou pressione B + OK). Pressione Iniciar (ícone Play) ou Alt + Enter.</li>
+    <li><strong>Cancelar operação:</strong> pressione Backspace ou acione o botão de emergência. No campo de texto, escreva M5 e dê Enter, ou selecione o Spindle M3.</li>
+  </ol>
+
+  <h3>Ferramentas</h3>
+  <ul>
+    <li>CNC</li>
+    <li>Chaves de boca 12 e 17</li>
+    <li>Fresas Topo 1mm, 2mm e esférica</li>
+  </ul>
+
+  <p><strong>Tempo médio:</strong> 3–5 min</p>
+
+  <h3>Pontos de atenção</h3>
+  <ul>
+    <li>Use óculos EPI para proteger os olhos dos cavacos.</li>
+    <li>Não utilize os dois tipos de medição na mesma operação — podem sobrescrever-se ou somar-se e provocar acidentes.</li>
+    <li>Ao importar ajustes, certifique-se de zerar o eixo Z caso ele mude.</li>
+    <li>Se houver incerteza em algum ponto, repita o processo do zero para garantir sucesso.</li>
+    <li>Certifique-se de que o sensor está funcionando — encoste levemente a ferramenta na peça e verifique a indicação 'Sensor'. Caso não apareça, prenda melhor a peça.</li>
+    <li>Limpe a máquina no final do dia com pincel, retirando pó de cavaco.</li>
+  </ul>
+			</div>
+			<div class="cont proc" data-ni="torno-p">	
+			<h2>Usinagem no Torno</h2>
+  <ol>
+    <li>Escolha a pinça segundo o tamanho do pedido; coloque na ponteira do torno e depois encaixe a aliança bruta do mesmo tamanho nela.</li>
+    <li>Ajuste a pressão da pinça com a alavanca esquerda até que a aliança esteja firme.</li>
+    <li>Selecione a ferramenta externa segundo o perfil desejado e acople no suporte que forma um ângulo reto com o eixo da ponteira; posicione para que fique de frente para a peça e ajuste o avanço da ferramenta para que o ponto máximo fique antes da peça, sem tocá-la.</li>
+    <li>Ligue a máquina girando a chave para esquerda, localizada na parte inferior esquerda da máquina.</li>
+    <li>Com a alavanca de avanço, usine a peça até o bruto tomar o perfil desejado.</li>
+    <li>Se necessário diminuir a largura, use o suporte direito (ferramenta externa reta) movendo sua alavanca de avanço; utilize o paquímetro para conferir o tamanho.</li>
+    <li>Após finalizado, gire para cima a alavanca de pressão para soltar a aliança; se ainda ficar presa, utilize o bastão medidor e um martelo e golpeie levemente a lateral para desprender a peça.</li>
+  </ol>
+
+  <h3>Ferramentas</h3>
+  <ul>
+    <li>Torno</li>
+    <li>Ferramentas Externas</li>
+    <li>Bastão medidor</li>
+    <li>Paquímetro</li>
+    <li>Pinça</li>
+    <li>Pincel</li>
+  </ul>
+
+  <p><strong>Tempo médio:</strong> 7 min</p>
+
+  <h3>Pontos de atenção</h3>
+  <ul>
+    <li>Use óculos EPI para evitar que cavacos entrem nos olhos.</li>
+    <li>Ajuste a pressão moderadamente — muita pressão pode danificar a ponteira e pouca pode soltar a peça.</li>
+    <li>Se a pressão se soltar no processo (ruído da máquina mudando ou alavanca subindo), pare imediatamente e reajuste.</li>
+    <li>Limpe a máquina no final do dia com pincel, retirando cavacos e separando-os para sucata.</li>
+  </ul>
+
+			</div>
+			<div class="cont proc" data-ni="crav-p">
+				<h2> Processo Cravação </h2>
+			</div>
+			<div class="cont proc" data-ni="grav-p"> 
+				<h2>Gravação</h2>
+  <ol>
+    <li>Segurar a aliança com a Mão Esquerda (se destro) apoiando-a no dedo alenar.</li>
+    <li>Segurar a Caneta da Retífica com outra mão, simulando uma pegada de caneta.</li>
+    <li>Apoiar a fresa inclinada no interno da aliança e manter o pulso firme.</li>
+    <li>Pisar com o pé Direito no Pedal da Retífica até o máximo, e com mão esquerda vá girando a aliança a cada 1-2 letras.</li>
+  </ol>
+
+  <h3>Ferramentas</h3>
+  <ul>
+    <li>Micro Retífica</li>
+    <li>Fresa Topo 1.5mm</li>
+    <li>Fresa Topo 1mm/2mm (se não tiver a 1.5mm)</li>
+  </ul>
+
+  <p><strong>Tempo médio:</strong> 4 min</p>
+
+  <h3>Pontos de atenção</h3>
+  <ul>
+    <li>Para evitar acidentes, ao terminar um processo, evite deixar a retífica sobre a perna.</li>
+    <li>Recomenda-se repassar as mesmas letras de 2-3 vezes para melhor visibilidade da gravação.</li>
+    <li>Mantenha o texto centralizado — uma dica é orientar as letras sempre para esquerda/cima, pois a visão diagonal do gravador pode deixar o texto torto.</li>
+  </ul>
+			</div>
+			<div class="cont proc" data-ni="solda-p"> 
+				 <h2>Redução de aro do Solitário</h2>
+  <ol>
+    <li><strong>Corte:</strong> corte o anel em dois pontos simétricos ao meio, segundo o tamanho desejado; feche-o com a mão, coloque o anel no bastão medidor e, com auxílio da parte traseira do alicate, deforme as pontas até o anel estar mais circular e menos oval.</li>
+    <li><strong>Solda:</strong> aplique o fluxo de solda na extremidade cortada formando uma película entre as pontas do anel; com o ferro de solda já quente e com estanho, faça um ponto pequeno de solda na extremidade com fluxo.</li>
+    <li><strong>Desbaste:</strong> com a micro retífica e uma fresa topo 1.5mm/2mm, desbaste o ponto de solda, moldando-o ao formato e curvatura da aliança.</li>
+    <li><strong>Lixamento:</strong> prenda um pedaço de lixa ferro 120 no lado esquerdo da esmirilhadeira e lixa ferro 220 no lado direito; lixe primeiro usando o lado direito para tirar riscos grosseiros e depois o esquerdo para dar acabamento.</li>
+  </ol>
+
+  <h3>Ferramentas</h3>
+  <ul>
+    <li>Ferro de Solda</li>
+    <li>Estanho</li>
+    <li>Fluxo de Solda Fria</li>
+    <li>Micro Retífica</li>
+    <li>Fresa Topo 1.5mm/2mm</li>
+    <li>Lixa Ferro 120 e 220</li>
+    <li>Esmirilhadeira</li>
+  </ul>
+
+  <p><strong>Tempo médio:</strong> 2 min</p>
+
+  <h3>Pontos de atenção</h3>
+  <ul>
+    <li>Evite deixar buracos no ponto de solda; corrija preenchendo com mais estanho.</li>
+    <li>Evite pontos de solda muito grandes — aumentam o tempo de desbaste.</li>
+    <li>Use EPI: máscara na etapa de soldagem e óculos (ou máscara) na etapa de desbaste para evitar inalação de fumaça e proteção ocular.</li>
+  </ul>
+			</div>
+		</div>
+		
+	</main>
+
+ <script src="./script.js">
+    </script>
+  
+ 
+  
+
+
+
+
+</body>
+
+</html>
