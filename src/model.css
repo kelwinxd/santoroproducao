@@ -460,6 +460,7 @@ main {
 
 .header-prod {
 	background-color: black;
+	width:100%;
 	color: yellow;
 	padding: 50px;
 	padding-inline:80px;
