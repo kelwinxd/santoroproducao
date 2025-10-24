@@ -293,6 +293,8 @@ function renderModalList() {
               pedido: nomeProduto
             }
           ]);
+
+          console.log("clicou adm")
     
         if (error) {
           console.error("Erro ao registrar pedido:", error.message);
