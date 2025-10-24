@@ -293,7 +293,7 @@ function renderModalList() {
           .from("pedidos")
           .insert([
             {
-              timestamp: agora,
+              data_pedido: agora,
               pedido: nomeProduto
             }
           ]);
