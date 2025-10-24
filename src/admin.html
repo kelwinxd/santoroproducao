@@ -179,20 +179,22 @@ verificarSessao()
       }
     
       alert("Quantidade atualizada!")
-    
-      // 🔹 Se o novo valor for menor que 4, dispara alerta no WhatsApp
-      if (parseInt(novaQtd) < 4) {
-        const telefone = "5519993723677"
-        const mensagem = encodeURIComponent(`🚨 Alerta: item ID ${larguraPeca} com baixo estoque (${novaQtd} unidades)!`)
-        const apiKey = "4661012" // troque pela sua chave do CallMeBot
-    
-        try {
-          await fetch(`https://api.callmebot.com/whatsapp.php?phone=${telefone}&text=${mensagem}&apikey=${apiKey}`)
-          console.log("📩 Mensagem enviada com sucesso!")
-        } catch (err) {
-          console.error("Erro ao enviar mensagem:", err)
-        }
-      }
+    // 🔹 Se o novo valor for menor que 4, dispara alerta no WhatsApp
+if (parseInt(novaQtd) < 4) {
+  try {
+    // Chama o seu endpoint Vercel
+    const res = await fetch(`/api/sendMessage?id=${larguraPeca}&qtd=${novaQtd}`)
+    const data = await res.json()
+    if (data.success) {
+      console.log("📩 Mensagem enviada com sucesso!")
+    } else {
+      console.error("Erro no endpoint:", data.error)
+    }
+  } catch (err) {
+    console.error("Erro ao enviar mensagem:", err)
+  }
+}
+
     
       carregarCatalogo()
     }
