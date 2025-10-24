@@ -4,7 +4,7 @@ export default async function handler(req, res) {
     const phone = "5519993723677"
     const apikey = "4661012"
     const text = encodeURIComponent(`🚨 Alerta: item ID ${id} com baixo estoque (${qtd} unidades)!`)
-    const url = `https://api.callmebot.com/whatsapp.php?phone=${phone}&text=${text}&apikey=${apikey}`
+    const url = `https://api.callmebot.com/whatsapp.php?phone=5519993723677&text=This+is+a+test&apikey=4661012`
   
     try {
       const response = await fetch(url)
