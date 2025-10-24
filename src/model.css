@@ -458,12 +458,13 @@ main {
 	width: 100%;
 
 }
-.desap {
-	display: none;
-}
 
 .list-op {
 	display: block;
+}
+
+.list-op.desap {
+	display: none;
 }
 
 #catalogoContainer {
@@ -491,6 +492,7 @@ main {
 .header-op {
 	display: flex;
 	justify-content: space-between;
+	align-items: center;
 }
 
 #logounBtn {
@@ -499,7 +501,7 @@ main {
 
 .expCards {
 	cursor: pointer;
-	font-size: 24px;
+	font-size: 28px;
 }
 
 

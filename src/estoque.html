@@ -165,6 +165,7 @@
 	expandBtn.forEach((btn) => {
   	btn.addEventListener("click", (e) => {
     const list = e.target.closest(".opcoes").querySelector(".list-op")
+	console.log("alcancei:",list)
 	if(btn.classList.contains("desap")){
 		expandBtn.textContent = "+"
 	} else {
