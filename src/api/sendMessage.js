@@ -9,7 +9,12 @@ export default async function handler(req, res) {
     try {
       const response = await fetch(url)
       const result = await response.text()
-      res.status(200).json({ success: true, result })
+      if (result.toLowerCase().includes("message queued") || result.toLowerCase().includes("ok")) {
+        res.status(200).json({ success: true, result })
+      } else {
+        res.status(500).json({ success: false, error: result })
+      }
+      
     } catch (err) {
       res.status(500).json({ success: false, error: err.message })
     }
