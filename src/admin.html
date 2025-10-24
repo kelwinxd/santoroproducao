@@ -183,7 +183,7 @@ verificarSessao()
 if (parseInt(novaQtd) < 4) {
   try {
     // Chama o seu endpoint Vercel
-    const res = await fetch(`/api/sendMessage?id=${larguraPeca}&qtd=${novaQtd}`)
+    const res = await fetch(`/api/sendMessage.js`)
     const data = await res.json()
     if (data.success) {
       console.log("📩 Mensagem enviada com sucesso!")
