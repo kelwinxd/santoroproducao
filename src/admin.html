@@ -30,6 +30,7 @@
 
     <h3>Adicionar novo item</h3>
     <form id="addForm">
+      <label for="largura">Largura</label>
       <select name="" id="largura">
         <option value="4">4</option>
         <option value="7">7</option>
@@ -57,6 +58,30 @@
     const catalogoDiv = document.getElementById('catalogo')
     const addForm = document.getElementById('addForm')
     const logoutBtn = document.getElementById('logoutBtn')
+
+
+    // 🔹 Checa se há sessão ativa ao carregar a página
+async function verificarSessao() {
+  const { data, error } = await supabase.auth.getSession()
+  const sessao = data?.session
+
+  if (sessao) {
+    // usuário já está logado
+    console.log("Sessão ativa:", sessao)
+    loginContainer.style.display = "none"
+    catalogoContainer.style.display = "block"
+    logoutBtn.style.display = "block"
+    carregarCatalogo()
+  } else {
+    // usuário precisa logar
+    loginContainer.style.display = "block"
+    catalogoContainer.style.display = "none"
+    logoutBtn.style.display = "none"
+  }
+}
+
+verificarSessao()
+
 
     // 🔹 Carrega a tabela de dados
     async function carregarCatalogo() {

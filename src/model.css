@@ -505,7 +505,7 @@ main {
 }
 
 .l-estoque li {
-	font-size: 28px;
+	font-size: 24px;
 }
 
 #logounBtn {
@@ -515,6 +515,22 @@ main {
 .expCards {
 	cursor: pointer;
 	font-size: 30px;
+}
+
+.addForm {
+	margin-bottom: 20px;
+	background-color: black;
+	color: #fff;
+}
+
+.addForm button {
+	background-color: yellow;
+	color: black;
+
+}
+
+#catalogo {
+	margin-bottom: 50px;
 }
 
 
