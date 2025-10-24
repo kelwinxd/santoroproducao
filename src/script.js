@@ -1,4 +1,4 @@
-
+import { createClient } from 'https://esm.sh/@supabase/supabase-js@2'
  
 
 const Options = document.querySelectorAll(".opcoes ul li")
@@ -6,6 +6,10 @@ const Containers = document.querySelectorAll(".containers .cont")
 const Links = document.querySelectorAll("header a")
 const btnCopy = document.querySelector('.copyc')
 
+
+const supabaseUrl = 'https://exsnpdmbuscemohjdpus.supabase.co'
+const supabaseKey = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImV4c25wZG1idXNjZW1vaGpkcHVzIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NjAzNTc5OTIsImV4cCI6MjA3NTkzMzk5Mn0.kS4VsaFTYID77kEyfd8rtfrEbXlcQDMdNToFxHL4JPc'
+const supabase = createClient(supabaseUrl, supabaseKey)
 
 const toolsList = {
   "cnc-t": [
