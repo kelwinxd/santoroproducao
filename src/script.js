@@ -280,6 +280,30 @@ function renderModalList() {
     whats.target = "_blank";
     whats.textContent = "Admin";
 
+    whats.addEventListener("click", async () => {
+      const nomeProduto = title; // pega o nome do produto
+      const agora = new Date().toISOString(); // pega data e hora no formato ISO
+      
+      try {
+        const { error } = await supabase
+          .from("pedidos")
+          .insert([
+            {
+              timestamp: agora,
+              pedido: nomeProduto
+            }
+          ]);
+    
+        if (error) {
+          console.error("Erro ao registrar pedido:", error.message);
+        } else {
+          console.log("✅ Pedido registrado com sucesso!");
+        }
+      } catch (err) {
+        console.error("Erro inesperado ao registrar pedido:", err);
+      }
+    });
+
     closeInfo.textContent = "X";
 	
  
