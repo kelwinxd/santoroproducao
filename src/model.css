@@ -517,13 +517,15 @@ main {
 	font-size: 30px;
 }
 
-.addForm {
+#addForm {
+	margin-top: 20px;
 	margin-bottom: 20px;
 	background-color: black;
 	color: #fff;
+	padding: 10px 20px;
 }
 
-.addForm button {
+#addForm button {
 	background-color: yellow;
 	color: black;
 
