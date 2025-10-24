@@ -92,7 +92,7 @@
 		
 		  const thead = document.createElement("thead")
 		  const headerRow = document.createElement("tr")
-		  const headers = ["Largura", "Aro", "Quantidade"]
+		  const headers = ["Aro", "Quantidade"]
 		  headers.forEach(h => {
 			const th = document.createElement("th")
 			th.textContent = h
@@ -107,7 +107,6 @@
 		  data.forEach(i => {
 			const row = document.createElement("tr")
 			row.innerHTML = `
-			  <td>${i.largura}</td>
 			  <td>${i.aro}</td>
 			  <td>${i.qtd}</td>
 			`
@@ -162,14 +161,20 @@
 		cards.forEach((c, i) => c.style.display = i === 0 ? 'block' : 'none')
 
 		const expandBtn = document.querySelectorAll(".expCards")
-		expandBtn.forEach((i) => {
-			i.addEventListener("click",(e) => {
-				e.target.closest(".list-op").classList.add("desap")
-				if(a.closest(".list-op").classList.contains("desap")){
-					a.closest(".list-op").classList.remove("desap")
-				}
-			})
-		})
+
+	expandBtn.forEach((btn) => {
+  	btn.addEventListener("click", (e) => {
+    const list = e.target.closest(".opcoes").querySelector(".list-op")
+	if(btn.classList.contains("desap")){
+		expandBtn.textContent = "+"
+	} else {
+		expandBtn.textContent = "-"
+	}
+
+    // alterna a classe "desap"
+    list.classList.toggle("desap")
+ 	 })
+	})
 		</script>
 		
 	  

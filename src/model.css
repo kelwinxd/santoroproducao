@@ -490,6 +490,7 @@ main {
 
 .header-op {
 	display: flex;
+	justify-content: space-between;
 }
 
 #logounBtn {
