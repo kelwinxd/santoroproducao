@@ -450,9 +450,6 @@ main {
 	justify-content: center;
 }
 
-.table-list {
-	margin-top: 10px;
-}
 
 .card-dados {
 	width: 100%;
@@ -500,6 +497,15 @@ main {
 	background-color: black;
 	color: #fff;
 	margin-top: 20px;
+	padding:7px 20px;
+}
+
+.l-estoque {
+	margin-bottom: 0;
+}
+
+.l-estoque li {
+	font-size: 28px;
 }
 
 #logounBtn {
@@ -508,7 +514,7 @@ main {
 
 .expCards {
 	cursor: pointer;
-	font-size: 28px;
+	font-size: 30px;
 }
 
 
