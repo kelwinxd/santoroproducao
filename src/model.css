@@ -488,8 +488,17 @@ main {
 	justify-content: space-between;
 }
 
+.header-op {
+	display: flex;
+}
+
 #logounBtn {
 	display: none;
+}
+
+.expCards {
+	cursor: pointer;
+	font-size: 24px;
 }
 
 
