@@ -43,6 +43,10 @@
     </form>
 
     <div id="catalogo"></div>
+
+    <div id="pedido-re">
+      
+    </div>
   </div>
 
   <script type="module">
@@ -232,6 +236,40 @@ if (parseInt(novaQtd) < 4) {
       catalogoContainer.style.display = "none"
       loginContainer.style.display = "block"
     })
+
+    async function carregarPedidos() {
+      const container = document.getElementById("pedido-re")
+      container.innerHTML = "<p>Carregando pedidos...</p>"
+  
+      const { data, error } = await supabase
+        .from("pedidos")
+        .select("*")
+        .order("data_pedido", { ascending: false }) // mostra os mais recentes primeiro
+  
+      if (error) {
+        console.error("Erro ao carregar pedidos:", error)
+        container.innerHTML = "<p>Erro ao carregar pedidos.</p>"
+        return
+      }
+  
+      if (data.length === 0) {
+        container.innerHTML = "<p>Nenhum pedido registrado ainda.</p>"
+        return
+      }
+  
+      // Monta o HTML dos pedidos
+      const html = data.map(p => `
+        <div style="padding:10px; border-bottom:1px solid #ccc">
+          <p><strong>Pedido:</strong> ${p.pedido}</p>
+          <p><strong>Data:</strong> ${new Date(p.timestamp).toLocaleString()}</p>
+        </div>
+      `).join("")
+  
+      container.innerHTML = html
+    }
+  
+    // Chama ao carregar a página
+    carregarPedidos()
 
     
   </script>
