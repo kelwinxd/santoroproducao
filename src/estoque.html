@@ -45,7 +45,7 @@
 		<div class="opcoes op-estoque">
 			<div class="header-op">
 				<h1>Retas Latão</h1>
-				<span class="expCards">+</span>
+				<span class="expCards">-</span>
 			</div>
 			<ul class="list-op rl"> 
 				<li data-op="rl-4">4mm</li>
@@ -162,20 +162,35 @@
 
 		const expandBtn = document.querySelectorAll(".expCards")
 
-	expandBtn.forEach((btn) => {
-  	btn.addEventListener("click", (e) => {
+expandBtn.forEach((btn) => {
+  btn.addEventListener("click", (e) => {
+    // acha a lista relacionada
     const list = e.target.closest(".opcoes").querySelector(".list-op")
-	console.log("alcancei:",list)
-	if(btn.classList.contains("desap")){
-		expandBtn.textContent = "+"
-	} else {
-		expandBtn.textContent = "-"
-	}
+    const contList = document.querySelectorAll(".containers-est")
 
-    // alterna a classe "desap"
+    // pega a segunda classe da lista (ex: 'rl')
+    const relatedClass = list.classList[1]
+
+    contList.forEach((c) => {
+      // se o container tiver a mesma classe, alterna visibilidade
+      if (c.classList.contains(relatedClass)) {
+        c.classList.toggle("desap")
+      }
+    })
+
+    // alterna visibilidade da lista
     list.classList.toggle("desap")
- 	 })
-	})
+
+    // troca símbolo do botão
+    if (list.classList.contains("desap")) {
+      btn.textContent = "+"
+    } else {
+      btn.textContent = "-"
+    }
+
+    console.log("alcancei:", list)
+  })
+})
 		</script>
 		
 	  

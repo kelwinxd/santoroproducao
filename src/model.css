@@ -463,6 +463,10 @@ main {
 	display: block;
 }
 
+.desap {
+	display: none;
+}
+
 .list-op.desap {
 	display: none;
 }
@@ -493,6 +497,9 @@ main {
 	display: flex;
 	justify-content: space-between;
 	align-items: center;
+	background-color: black;
+	color: #fff;
+	margin-top: 20px;
 }
 
 #logounBtn {
