@@ -426,4 +426,37 @@ closeMenu.addEventListener('click', () => {
 })
 
 
+const btnCopyCont = document.querySelectorAll(".cp-cont")
+
+btnCopyCont.forEach(btn => {
+  btn.addEventListener('click', async (e) => {
+    const button = e.currentTarget;                 // o botão que foi clicado
+    const parentDiv = button.closest('.info-contato');    // pega o container com data-link
+    const myText = parentDiv.querySelector("span").textContent ?? '';   // link do card
+
+    if (!myText) {
+      console.warn('Sem link para copiar');
+      return;
+    }
+
+    try {
+      await navigator.clipboard.writeText(myText);
+      console.log('Texto copiado com sucesso!');
+
+      // altera somente o botão clicado
+     
+      button.setAttribute("disabled", "disabled");
+
+      setTimeout(() => {
+        
+        button.removeAttribute("disabled");
+      }, 1000);
+    } catch (err) {
+      console.error('Falha ao copiar o texto: ', err);
+    }
+  });
+});
+
+
+
 

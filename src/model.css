@@ -535,6 +535,59 @@ main {
 	margin-bottom: 50px;
 }
 
+.container-cont {
+	display: flex;
+	flex-direction: column;
+	align-items: start;
+	text-align: left;
+}
+
+.contato {
+	margin-top: 10px;
+	background-color: #000;
+	color: #fff;
+	width: 100%;
+	padding: 7px 10px;
+	height: 120px;
+}
+
+.contato p{
+	text-align: left;
+}
+
+.line-contato {
+	height: 1px;
+	width: 100%;
+	background-color: #000;
+}
+.title-cont {
+	margin-top: 20px;
+	
+}
+
+.nome-cont {
+	color: yellow;
+	font-size: 24px;
+	margin-bottom: 5px;
+}
+
+.info-contato {
+	display: flex;
+	gap: 20px;
+	align-items: center;
+	margin-top: 5px;
+	
+}
+
+.info-contato a {
+	text-decoration: none;
+	color: #fff;
+}
+
+.info-contato p > i {
+	margin-right: 5px;
+}
+
 
 @media screen and (max-width:800px){
 	html,body {
@@ -542,6 +595,10 @@ main {
 		max-width:100%;
 		
 	
+	}
+
+	.contato {
+		width: 100%;
 	}
 	
 	.info-modal {

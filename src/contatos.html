@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt">
 
 <head>
     <meta charset="UTF-8">
@@ -7,6 +7,12 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="shortcut icon" href="logosan.png" type="image/x-icon" />
     <link rel="stylesheet" type="text/css" href="./model.css">
+    <link rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css"
+      integrity="sha512-… (hash) …"
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer" />
+
 	<!-- Supabase JS SDK -->
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/dist/supabase.min.js"></script>
 <!---Teste-->
@@ -26,7 +32,7 @@
 </a>
 <ul class="list">
 	 
-    <a href="./index.html" class="tool active">Ferramentas</a>
+    <a href="./index.html" class="tool">Ferramentas</a>
     <a href="./processos.html" class="tool">Processos</a>
 	<a href="./estoque.html" class="tool">Estoque</a>
     <a href="./contatos.html" class="tool active">Contatos</a>
@@ -49,21 +55,82 @@
 
     <main> 
 		
-        <div>
-            <h1>Direção</h1>
+        <div class="container-cont">
+            <h1 class="title-cont">Direção</h1>
+            <div class="line-contato"></div>
             <div class="contato">
-                <p>Aleteia</p>
-                <p>Contato:32423432423</p>
+                <p class="nome-cont">Aleteia</p>
+                <div class="info-contato">
+                    <p><i class="fa-solid fa-phone" aria-hidden="true"></i>
+                        <span class="number-cont">2232233232</span></p>
+
+                        <button class="cp-cont"><i class="fa-solid fa-copy"></i>
+                        </button>
+                </div>
+             
+               
             </div>
+           
             <div class="contato">
-                <p>Fernando</p>
-                <p>Contato:432432432</p>
+                <p class="nome-cont">Aleteia</p>
+                <div class="info-contato">
+                    <p><i class="fa-solid fa-phone" aria-hidden="true"></i>
+                        <span class="number-cont">2232233232</span></p>
+
+                        <button class="cp-cont"><i class="fa-solid fa-copy"></i>
+                        </button>
+                </div>
+                <div class="info-contato">
+                    <p><i class="fa-solid fa-globe" aria-hidden="true"></i>
+
+                        <a href="#">www.teste.com</a></p>
+
+                        
+               
+                </div>
+               
             </div>
 
-            <h1>Direção</h1>
+            <h1 class="title-cont">Fornecedores</h1>
+            <div class="line-contato"></div>
             <div class="contato">
-                <p>Aleteia</p>
-                <p>Contato:</p>
+                <p class="nome-cont">Aleteia</p>
+                <div class="info-contato">
+                    <p><i class="fa-solid fa-phone" aria-hidden="true"></i>
+                        <span class="number-cont">2232233232</span></p>
+
+                        <button class="cp-cont"><i class="fa-solid fa-copy"></i>
+                        </button>
+                </div>
+                <div class="info-contato">
+                    <p><i class="fa-solid fa-globe" aria-hidden="true"></i>
+
+                        <a href="#">www.teste.com</a></p>
+
+                        
+                        </button>
+                </div>
+               
+            </div>
+
+            <div class="contato">
+                <p class="nome-cont">Aleteia</p>
+                <div class="info-contato">
+                    <p><i class="fa-solid fa-phone" aria-hidden="true"></i>
+                        <span class="number-cont">2232233232</span></p>
+
+                        <button class="cp-cont"><i class="fa-solid fa-copy"></i>
+                        </button>
+                </div>
+                <div class="info-contato">
+                    <p><i class="fa-solid fa-globe" aria-hidden="true"></i>
+
+                        <a href="#">www.teste.com</a></p>
+
+                        
+                        </button>
+                </div>
+               
             </div>
         </div>
 	</main>
