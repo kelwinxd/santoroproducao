@@ -117,7 +117,7 @@ const toolsList = {
       title: "Fluxo para Solda Fria 1L",
       desc: "Fluxo padrão para solda",
       link: "https://api.whatsapp.com/send/?phone=5519983383531&text=Ola+tudo+bem?+Gostaria+de+comprar+Fluxo+para+solda+fria+1L,+voces+tem+disponivel?",
-	  img:"./imgs/img-tool8.webp",
+	  img:"./imgs/fluxo-tool.jpg",
 	  type:"solda"
     }
   ],
