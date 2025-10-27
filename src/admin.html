@@ -261,7 +261,7 @@ if (parseInt(novaQtd) < 4) {
       const html = data.map(p => `
         <div style="padding:10px; border-bottom:1px solid #ccc">
           <p><strong>Pedido:</strong> ${p.pedido}</p>
-          <p><strong>Data:</strong> ${new Date(p.timestamp).toLocaleString()}</p>
+          <p><strong>Data:</strong> ${new Date(p.data_pedido).toLocaleString()}</p>
         </div>
       `).join("")
   

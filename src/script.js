@@ -101,7 +101,7 @@ const toolsList = {
       desc: "Pedras usadas em alianças com mais de 1 pedra, como A6000",
       link: "https://wa.me/19999955933?text=Ola+tudo+bem?+Vocês+tem+disponivel+zirconia+1.25mm?",
 	  img:"./imgs/pedras-tool.jpg",
-	  type:"acabamento"
+	  type:"cravacao"
     }
   ],
   
@@ -283,7 +283,11 @@ function renderModalList() {
 	if(i.dataset.type == "torno"){
 		console.log(i)
 		linkHref = i.querySelector("h1").textContent
-	} else {
+	} else if (i.dataset.type == "cravacao"){
+    linkHref = i.querySelector("h1").textContent
+  }
+  
+  else {
 		linkHref = i.querySelector('.t-btns').dataset.link;
 	}
     let message = encodeURIComponent(`Oi! Vamos precisar dessa ferramenta para ${i.dataset.type}: ${linkHref}`);
