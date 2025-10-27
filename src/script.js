@@ -90,11 +90,18 @@ const toolsList = {
     },
 	,
 	{
-      title: "Fresa Topo 1mm 4 Cortes",
-      desc: "Usadas para Gravação",
+      title: "Fresa Topo 1.5mm 4 Cortes",
+      desc: "Ideal para Gravação em aço inox e latão",
       link: "https://www.mercadolivre.com.br/fresa-topo-metal-duro-15mm-4-cortes-com-cobertura-hrc55/up/MLBU1425688172#polycard_client=search-nordic&search_layout=grid&position=8&type=product&tracking_id=67135a72-002b-41de-91d7-8cf7fb7e1894&wid=MLB2623477387&sid=search",
 	  img:"./imgs/img-tool.jpg",
 	  type:"gravação"
+    },
+    {
+      title: "Zircônia 1.25mm",
+      desc: "Pedras usadas em alianças com mais de 1 pedra, como A6000",
+      link: "https://wa.me/19999955933?text=Ola+tudo+bem?+Vocês+tem+disponivel+zirconia+1.25mm?",
+	  img:"./imgs/pedras-tool.jpg",
+	  type:"acabamento"
     }
   ],
   
@@ -109,7 +116,7 @@ const toolsList = {
 	{
       title: "Fluxo para Solda Fria 1L",
       desc: "Fluxo padrão para solda",
-      link: "https://api.whatsapp.com/send/?phone=5519983383531&text=Ola+tudo+bem?+Gostaria+de+comprar+Fluxo+para+solda+fria+,+voces+tem+disponivel?",
+      link: "https://api.whatsapp.com/send/?phone=5519983383531&text=Ola+tudo+bem?+Gostaria+de+comprar+Fluxo+para+solda+fria+1L,+voces+tem+disponivel?",
 	  img:"./imgs/img-tool8.webp",
 	  type:"solda"
     }
