@@ -311,16 +311,27 @@ main {
 	background-color:black;
 	color:#fff;
 	width:80%;
-	height:80%;
+	min-height:80%;
 	position:absolute;
 	left:50%;
 	top:50%;
 	transform:translate(-50%,-50%);
-	z-index:2222;
+	z-index:2222222222222;
 	display:none;
+	
+	
+
+	
 
 	
 	
+
+}
+
+.btnCp-list {
+	position:absolute;
+	bottom: 20px;
+	left: 20px;
 
 }
 
@@ -613,7 +624,9 @@ main {
 	
 	.modal-chart {
 		width:80%;
-		height:70%;
+		
+		min-height:70%;
+		padding-bottom: 50px;
 	}
 
 	.chart {

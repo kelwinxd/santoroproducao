@@ -232,6 +232,9 @@ document.querySelectorAll('.btnSend').forEach(btn => {
 	let chartLink = [];
 	const chartDiv = document.querySelector(".chart")
 	const modalChart = document.querySelector('.modal-chart')
+  const btnListCp = document.querySelector(".btnCp-list")
+
+ 
 	
 	document.querySelectorAll('.btnSend').forEach(btn => {
   btn.addEventListener('click', async (e) => {
@@ -243,7 +246,38 @@ document.querySelectorAll('.btnSend').forEach(btn => {
     chart.push(prod);
     btn.textContent = "Pedido!";
     btn.disabled = true;
+
   }
+
+  btnListCp.addEventListener('click', async (e) => {
+     e.preventDefault()
+     const myText = Array.from(chart).map((i) => {
+      return i.querySelector("h1")?.textContent
+     }).join(", ")
+     console.log(myText)
+
+
+    if (!myText) {
+      console.warn('Sem link para copiar');
+      return;
+    }
+
+    try {
+      await navigator.clipboard.writeText(myText);
+      console.log('Texto copiado com sucesso!');
+
+      // altera somente o botão clicado
+      btnListCp.textContent = "Copiado!";
+      btnListCp.setAttribute("disabled", "disabled");
+
+      setTimeout(() => {
+        btnListCp.textContent = "Copiar Lista";
+        btnListCp.removeAttribute("disabled");
+      }, 1000);
+    } catch (err) {
+      console.error('Falha ao copiar o texto: ', err);
+    }
+  });
 
   const exists2 = chartLink.includes(prodLink);
   if (!exists2) {
@@ -253,6 +287,8 @@ document.querySelectorAll('.btnSend').forEach(btn => {
   renderModalList();
   document.querySelector(".chart p").textContent = chart.length
 });
+
+
 
 function renderModalList() {
   let uniqueList = [...new Set(chart)];
@@ -456,6 +492,9 @@ btnCopyCont.forEach(btn => {
     }
   });
 });
+
+
+
 
 
 
