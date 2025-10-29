@@ -259,7 +259,7 @@ if (parseInt(novaQtd) < 4) {
   
       // Monta o HTML dos pedidos
       const html = data.map(p => `
-        <div style="padding:10px; border-bottom:1px solid #ccc">
+        <div style="padding:10px; border-bottom:1px solid #ccc" class="pedidos-list">
           <p><strong>Pedido:</strong> ${p.pedido}</p>
           <p><strong>Data:</strong> ${new Date(p.data_pedido).toLocaleString()}</p>
         </div>

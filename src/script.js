@@ -333,14 +333,15 @@ function renderModalList() {
 
     whats.addEventListener("click", async () => {
       const nomeProduto = title; // pega o nome do produto
-      const agora = new Date().toISOString(); // pega data e hora no formato ISO
+      const agora = new Date();
+      const dataLocal = agora.toLocaleString('pt-BR', { timeZone: 'America/Sao_Paulo' });
       
       try {
         const { error } = await supabase
           .from("pedidos")
           .insert([
             {
-              data_pedido: agora,
+              data_pedido: dataLocal,
               pedido: nomeProduto
             }
           ]);

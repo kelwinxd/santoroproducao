@@ -607,6 +607,10 @@ main {
 	margin-right: 5px;
 }
 
+.pedidos-list p {
+	text-align: left;
+}
+
 
 @media screen and (max-width:800px){
 	html,body {
