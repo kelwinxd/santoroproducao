@@ -335,7 +335,7 @@ function renderModalList() {
       const nomeProduto = title; // pega o nome do produto
       const agora = new Date();
       const dataLocal = agora.toLocaleString('pt-BR', { timeZone: 'America/Sao_Paulo' });
-      
+      console.log(dataLocal)
       try {
         const { error } = await supabase
           .from("pedidos")
