@@ -611,6 +611,21 @@ main {
 	text-align: left;
 }
 
+.list-proc img {
+width: 30%;
+border: 1px solid black;
+object-fit: cover;
+}
+
+.proc-div {
+	padding-top:20px;
+	padding-bottom:20px;
+	display: flex;
+	justify-content: center;
+	gap: 20px;
+	height: 300px;
+}
+
 
 @media screen and (max-width:800px){
 	html,body {
@@ -619,6 +634,15 @@ main {
 		
 	
 	}
+
+	.proc-div {
+		height: 180px;
+	}
+
+	.list-proc img {
+		width: 50%;
+		border: 1px solid black;
+		}
 
 	.contato {
 		width: 100%;

@@ -138,7 +138,7 @@ verificarSessao()
 
         const btnEditar = document.createElement("button")
         btnEditar.textContent = "Editar"
-        btnEditar.onclick = () => editarItem(i.id, i.qtd,i.largura)
+        btnEditar.onclick = () => editarItem(i.id, i.qtd,i.largura,i.aro)
 
         const btnExcluir = document.createElement("button")
         btnExcluir.textContent = "Excluir"
@@ -168,7 +168,7 @@ verificarSessao()
       carregarCatalogo()
     })
 
-    async function editarItem(id, qtdAtual, larguraPeca) {
+    async function editarItem(id, qtdAtual, larguraPeca, aro) {
       const novaQtd = prompt("Nova quantidade:", qtdAtual)
       if (novaQtd === null) return
     
@@ -181,13 +181,15 @@ verificarSessao()
         alert("Erro ao atualizar: " + error.message)
         return
       }
+      const larg = larguraPeca;
+      const AroPeca = aro;
     
       alert("Quantidade atualizada!")
     // 🔹 Se o novo valor for menor que 4, dispara alerta no WhatsApp
 if (parseInt(novaQtd) < 4) {
   try {
     // Chama o seu endpoint Vercel
-    const res = await fetch(`/api/sendMessage`)
+    const res = await fetch(`/api/sendMessage?larg=${encodeURIComponent(larg)}&aro=${encodeURIComponent(AroPeca)}`)
     const data = await res.json()
     if (data.success) {
       console.log("📩 Mensagem enviada com sucesso!")
