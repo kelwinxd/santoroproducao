@@ -714,6 +714,16 @@ main {
 	
 }
 
+footer {
+	margin-top:100px;
+	padding:100px 50px;
+	background-color:yellow;
+}
+
+footer p {
+	align-text:center;
+}
+
 
 
 
