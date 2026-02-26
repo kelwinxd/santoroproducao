@@ -688,6 +688,11 @@ main {
 	padding-inline:50px;
 }
 
+.list-proc strong {
+	text-align:left;
+	
+}
+
 .cont {
 	justify-content:center;
 	flex-wrap:wrap;
